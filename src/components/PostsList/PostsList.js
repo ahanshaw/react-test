@@ -58,6 +58,16 @@ export function PostsList() {
 		window.scroll({top: 0, left: 0, behavior: 'smooth' })
 	}
 
+	const firstPage = () => {
+		setCurrentPage(1);
+		getPaginatedPosts();
+	}
+
+	const lastPage = () => {
+		setCurrentPage(totalPages);
+		getPaginatedPosts();
+	}
+
 	const nextPage = () => {
 		setCurrentPage(currentPage + 1);
 		getPaginatedPosts();
@@ -92,7 +102,7 @@ export function PostsList() {
                     )
                 })}
 			</div>
-			{totalPages > 1 && <Pagination prevPage={prevPage} nextPage={nextPage} currentPage={currentPage} totalPages={totalPages} />}
+			{totalPages > 1 && <Pagination firstPage={firstPage} lastPage={lastPage} prevPage={prevPage} nextPage={nextPage} currentPage={currentPage} totalPages={totalPages} />}
         </div>
     );
 }

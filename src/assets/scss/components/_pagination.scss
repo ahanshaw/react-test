@@ -1,26 +1,59 @@
 .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     .btn {
-        @include font-size(24);
+        @include font-bold;
+        @include font-size(16);
         color: $black;
         padding: 10px;
-        vertical-align: -3px;
-        transition: color 0.3s ease;
 
-        &:hover,
-        &:disabled {
-            color: rgba($black, 0.65);
+        &--first,
+        &--last {
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color 0.3s ease;
+
+            &:hover {
+                color: $black;
+                text-decoration-color: $black;
+            }
+
+            &:disabled {
+                color: rgba($black, 0.65);
+                text-decoration-color: transparent;
+                cursor: default;
+
+                &:hover {
+                    color: rgba($black, 0.65);
+                }
+            }
         }
 
-        &:disabled {
-            cursor: default;
+        &--prev,
+        &--next {
+            vertical-align: -3px;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:disabled {
+                color: rgba($black, 0.65);
+            }
+
+            &:disabled {
+                cursor: default;
+            }
         }
 
         &--prev {
+            @include font-size(24);
             margin-right: 10px;
             transform: scaleX(-1);
         }
 
         &--next {
+            @include font-size(24);
             margin-left: 10px;
         }
     }
