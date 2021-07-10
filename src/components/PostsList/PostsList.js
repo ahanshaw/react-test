@@ -7,6 +7,7 @@ import { PostsItem } from "../PostsItem/PostsItem";
 export function PostsList() {
 	const [isLoading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
+	const [title, setTitle] = useState('All Articles');
 	const {authorId} = useParams();
 
     // get posts
@@ -19,9 +20,11 @@ export function PostsList() {
 
 		if (authorId) {
 			apiUrl = 'https://jsonplaceholder.typicode.com/posts/?userId=' + authorId;
+			setTitle('All Articles by ' + authorId);
 		}
 		else {
 			apiUrl = 'https://jsonplaceholder.typicode.com/posts/';
+			setTitle('All Articles');
 		}
 
 		// fetch data
@@ -55,7 +58,8 @@ export function PostsList() {
 
 	// if posts are loaded
 	return (
-        <div>
+		<div>
+			<h1>{title}</h1>
             <div className="posts-list">
                 {posts.map((post) => {
                     return (

@@ -19,12 +19,13 @@ body {
     @include font-reg;
     @include font-size(18);
     line-height: 1.5;
-    color: var(--black);
-    background-color: var(--white);
+    color: $black;
+    background-color: $white;
 }
 
 h1 {
     @include font-bold;
+    @include font-size(36);
     line-height: 1.2;
 }
 
