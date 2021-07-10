@@ -47,15 +47,20 @@ export function Post() {
 
     return (
         <div className="post">
-			<h1>{post.title}</h1>
-			<p>By Author {post.userId}</p>
-			<p>{post.body}</p>
-			{comments.map((comment) => {
-				return (
-					<PostComments key={comment.id} comment={comment} />
-				)
-			})}
-			<Link to={`/author/${post.userId}`}>Read More by Author {post.userId}</Link>
+			<div className="post__content">
+				<h1>{post.title}</h1>
+				<p className="author">By Author {post.userId}</p>
+				<p>{post.body}</p>
+				<Link className="read-more" to={`/author/${post.userId}`}>Read More by Author {post.userId} <span className="arrow">&#x27B8;</span></Link>
+				<h2>Comments</h2>
+			</div>
+			<div className="post__comments">
+				{comments.map((comment) => {
+					return (
+						<PostComments key={comment.id} comment={comment} />
+					)
+				})}
+			</div>
 		</div>
     );
 }

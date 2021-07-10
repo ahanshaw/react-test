@@ -1,0 +1,46 @@
+.post {
+    h2 {
+        margin: 60px 0 20px 0;
+    }
+
+    .author {
+        @include font-med;
+    }
+
+    .read-more {
+        display: block;
+        @include font-bold;
+        @include font-size(16);
+        text-decoration: none;
+        color: $black;
+        margin: 40px 0 0 0;
+
+        .arrow {
+            @include font-size(20);
+            color: transparent;
+            margin-left: 5px;
+            transition: color 0.3s ease;
+            vertical-align: -2px;
+        }
+
+        &:hover {
+            .arrow {
+                color: $black;
+            }
+        }
+    }
+
+    &__content {
+        max-width: 600px;
+    }
+
+    &__comments {
+        columns: 2;
+        column-gap: 60px;
+
+        @include mobile {
+            columns: 1;
+            column-gap: 0;
+        }
+    }
+}
