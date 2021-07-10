@@ -20,7 +20,7 @@ export function PostsList() {
 
 		if (authorId) {
 			apiUrl = 'https://jsonplaceholder.typicode.com/posts/?userId=' + authorId;
-			setTitle('All Articles by ' + authorId);
+			setTitle('All Articles by Author ' + authorId);
 		}
 		else {
 			apiUrl = 'https://jsonplaceholder.typicode.com/posts/';
@@ -45,7 +45,7 @@ export function PostsList() {
         return function cleanup() {
             mounted = false
         }
-	}, []);
+	}, [authorId]);
 
 	// if posts are loading
     if (isLoading) {

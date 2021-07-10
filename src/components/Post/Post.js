@@ -48,7 +48,7 @@ export function Post() {
     return (
         <div className="post">
 			<h1>{post.title}</h1>
-			<p>{post.userId}</p>
+			<p>By Author {post.userId}</p>
 			<p>{post.body}</p>
 			{comments.map((comment) => {
 				return (

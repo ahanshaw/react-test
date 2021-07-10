@@ -27,6 +27,7 @@ h1 {
     @include font-bold;
     @include font-size(36);
     line-height: 1.2;
+    margin: 0 0 40px 0;
 }
 
 h2 {
