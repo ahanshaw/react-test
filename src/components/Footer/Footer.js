@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <footer className="footer">
-        <small>&copy;{new Date().getFullYear()}</small>
+        <small>Articles &copy;{new Date().getFullYear()}</small>
     </footer>
   );
 }

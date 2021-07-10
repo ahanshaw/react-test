@@ -3,10 +3,15 @@ import { useParams } from "react-router-dom";
 
 import { Loader } from "../Loader/Loader";
 import { PostsItem } from "../PostsItem/PostsItem";
+import { Pagination } from "../Pagination/Pagination";
 
 export function PostsList() {
 	const [isLoading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
+	const [paginatedPosts, setPaginatedPosts] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const numberPerPage = 12;
+	const totalPages = Math.ceil(posts.length / numberPerPage);
 	const [title, setTitle] = useState('All Articles');
 	const {authorId} = useParams();
 
@@ -46,6 +51,26 @@ export function PostsList() {
             mounted = false
         }
 	}, [authorId]);
+	
+	// pagination 
+	const getPaginatedPosts = () => {
+		setPaginatedPosts(posts.slice(currentPage * numberPerPage - numberPerPage, currentPage * numberPerPage));
+		window.scroll({top: 0, left: 0, behavior: 'smooth' })
+	}
+
+	const nextPage = () => {
+		setCurrentPage(currentPage + 1);
+		getPaginatedPosts();
+	}
+
+	const prevPage = () => {
+		setCurrentPage(currentPage - 1);
+		getPaginatedPosts();
+	}
+
+	useEffect(() => {
+		setPaginatedPosts(posts.slice(currentPage * numberPerPage - numberPerPage, currentPage * numberPerPage));
+	}, [posts, currentPage, numberPerPage]);
 
 	// if posts are loading
     if (isLoading) {
@@ -61,12 +86,13 @@ export function PostsList() {
 		<div>
 			<h1>{title}</h1>
             <div className="posts-list">
-                {posts.map((post) => {
+                {paginatedPosts.map((post) => {
                     return (
                         <PostsItem key={post.id} post={post} />
                     )
                 })}
-            </div>
+			</div>
+			{totalPages > 1 && <Pagination prevPage={prevPage} nextPage={nextPage} currentPage={currentPage} totalPages={totalPages} />}
         </div>
     );
 }

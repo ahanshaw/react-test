@@ -1,0 +1,27 @@
+.pagination {
+    .btn {
+        @include font-size(24);
+        color: $black;
+        padding: 10px;
+        vertical-align: -3px;
+        transition: color 0.3s ease;
+
+        &:hover,
+        &:disabled {
+            color: rgba($black, 0.65);
+        }
+
+        &:disabled {
+            cursor: default;
+        }
+
+        &--prev {
+            margin-right: 10px;
+            transform: scaleX(-1);
+        }
+
+        &--next {
+            margin-left: 10px;
+        }
+    }
+}
