@@ -17,13 +17,20 @@ html {
 
 body {
     @include font-reg;
+    @include font-size(18);
+    line-height: 1.5;
     color: var(--black);
     background-color: var(--white);
 }
 
-h1,
-h2 {
+h1 {
     @include font-bold;
+    line-height: 1.2;
+}
+
+h2 {
+    @include font-med;
+    line-height: 1.2;
 }
 
 .wrapper {
@@ -31,7 +38,7 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     width: calc(100% - 100px);
-    max-width: 1200px;
+    max-width: 1000px;
     min-height: 100vh;
     margin: 0 auto 50px auto;
     padding: 25px 0;

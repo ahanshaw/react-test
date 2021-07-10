@@ -1,0 +1,13 @@
+.posts-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -40px;
+
+    @include tablet {
+        margin: 0 -20px;
+    }
+
+    @include mobile {
+        margin: 0;
+    }
+}
