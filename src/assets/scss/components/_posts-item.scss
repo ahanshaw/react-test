@@ -3,13 +3,8 @@
     padding: 0 40px 40px 40px;
 
     @include tablet {
-        flex: 0 0 50%;
-        margin: 0 0 20px 0;
-        padding: 20px;
-    }
-
-    @include mobile {
         flex: 0 0 100%;
+        margin: 0 0 40px 0;
         padding: 0;
     }
 
